@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Audiocard from './Audiocard';
 
-export default function Audio() {
+export default function Audio(props) {
   const [videoData, setVideoData] = useState([]);
-
+  
   useEffect(() => {
     async function fetchData() {
       const url = 'http://127.0.0.1:8000/get_data';
@@ -20,7 +20,12 @@ export default function Audio() {
       <div className="row">
         {videoData.map((elem) => (
           <div className="col-md-3" key={elem.id} style={{ marginBottom: '1rem' }}>
-            <Audiocard title={elem.title} thumbnail={elem.thumbnails[0]} />
+            <Audiocard 
+            title={elem.title}
+            thumbnail={elem.thumbnails[0]}
+            duration={elem.duration}
+            getid={props.getcardid}
+            id={elem.id}/>
           </div>
         ))}
       </div>
