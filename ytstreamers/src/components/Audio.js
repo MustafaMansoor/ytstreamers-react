@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Audiocard from './Audiocard';
+import AudioUrl from './AudioUrl'
 
-export default function Audio(props) {
+export default function Audio() {
   const [videoData, setVideoData] = useState([]);
-  
-  useEffect(() => {
+  const[audioID,setaudioID]=useState();
+    useEffect(() => {
     async function fetchData() {
       const url = 'http://127.0.0.1:8000/get_data';
       const response = await fetch(url);
@@ -24,11 +25,14 @@ export default function Audio(props) {
             title={elem.title}
             thumbnail={elem.thumbnails[0]}
             duration={elem.duration}
-            getid={props.getcardid}
+            getid={setaudioID}
             id={elem.id}/>
           </div>
         ))}
       </div>
+      {audioID && <AudioUrl
+      cardid={audioID}
+      />}
     </div>
   );
 }
