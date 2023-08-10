@@ -1,11 +1,12 @@
 import React from 'react';
 
-export default function Nav() {
+export default function Nav(props) {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const searchTerm = formData.get("search");
     console.log("Search Term:", searchTerm);
+    props.Item(searchTerm);
   };
 
   return (
@@ -19,7 +20,7 @@ export default function Nav() {
         <ul className="navbar-nav ms-auto">
           <li className="nav-item mr-2">
             <form className="d-flex" onSubmit={handleFormSubmit}>
-              <input className="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" style={{ width: "500px" }} />
+              <input className="form-control me-2 rounded-pill" type="search" name="search" placeholder="Search" aria-label="Search" style={{ width: "450px" }} />
             </form>
           </li>
         </ul>

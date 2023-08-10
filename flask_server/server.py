@@ -6,9 +6,10 @@ import yt_dlp
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-@app.route('/get_data')
+@app.route('/get_data',methods=['GET'])
 def get_data():
-    results = YoutubeSearch('somebody that i used to know', max_results=100).to_dict()
+    keyword=request.args.get('keyword')
+    results = YoutubeSearch(keyword, max_results=100).to_dict()
     if results:
         return results
 
@@ -18,7 +19,7 @@ def get_audio_url():
     if results_id:
         video_link = 'https://www.youtube.com/watch?v=' + results_id
         ydl_opts = {
-            'format': 'bestaudio[ext=m4a]',
+            'format': 'bestaudio',
             'quiet': True,
         }
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:

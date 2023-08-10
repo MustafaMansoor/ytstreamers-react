@@ -1,10 +1,16 @@
 import Audio from './components/Audio';
 import Nav from './components/Nav';
+import React, { useState } from 'react';
 function App() {
+  const [SearchItem,SetSearchItem]=useState("");
+
+
+
+  
   return (
     <div>
-      <Nav/>
-      <Audio/>
+      <Nav Item={SetSearchItem}/>
+      <Audio Item={SearchItem}/>
     </div>
   );
 }
