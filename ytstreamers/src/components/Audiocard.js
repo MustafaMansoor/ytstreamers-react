@@ -4,7 +4,7 @@ export default function Audiocard(props) {
     props.getid(props.id)
   };
   return (
-    <div onClick={cardid}style={{ width: '15rem', border: 'none' }}>
+    <div onClick={cardid}style={{  border: 'none' }}>
       <div style={{ position: 'relative' }}>
         <img className="card-img-top"src={props.thumbnail}alt={props.title}style={{ objectFit: 'cover' }}/>
         <span className="badge rounded-pill bg-dark position-absolute bottom-0 end-0 m-2"style={{ zIndex: 1 }}>

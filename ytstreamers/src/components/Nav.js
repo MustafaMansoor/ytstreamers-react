@@ -8,7 +8,6 @@ export default function Nav(props) {
     console.log("Search Term:", searchTerm);
     props.Item(searchTerm);
   };
-
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand ms-4 mr-2" href="/"><strong>YT Streamers</strong></a>
