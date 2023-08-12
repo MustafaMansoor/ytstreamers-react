@@ -53,7 +53,7 @@ export default function Audio({ Item, loaderProgress }) {
           ))}
         </div>
       </InfiniteScroll>
-      {/* <AudioUrl cardid={audioID} /> */}
+      <AudioUrl cardid={audioID} />
     </div>
   );
 }

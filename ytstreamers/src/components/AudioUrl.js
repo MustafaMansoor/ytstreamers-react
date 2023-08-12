@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import ReactPlayer from 'react-player';
+import ReactAudioPlayer from 'react-audio-player';
 
 export default function AudioUrl(props) {
   const [videoUrl, setVideoUrl] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     if (props.cardid) {
@@ -15,39 +14,31 @@ export default function AudioUrl(props) {
         const data = await response.json();
         setVideoUrl(data.url);
         setLoading(false);
-        setIsPlaying(true);
       };
       fetchVideoUrl();
     }
   }, [props.cardid]);
 
-  const handlePlay = () => {
-    setIsPlaying(true);
-  };
-
-  const handlePause = () => {
-    setIsPlaying(false);
+  const audioPlayerStyle = {
+    width: '100%', // Set the desired width here
+    maxWidth: '1500px', // Set a maximum width if needed
   };
 
   return (
-    <div className="fixed-bottom bg-light text-white">
+    <div className="fixed-bottom bg-light text-white d-flex justify-content-center align-items-center" style={{ maxHeight: '55px' }}>
       {videoUrl && !loading ? (
-        <div style={{ maxHeight: '10px' }}>
-          <ReactPlayer
-            url={videoUrl}
-            controls
-            playing={isPlaying}
-            onPause={handlePause}
-            onPlay={handlePlay}
-          />
-        </div>
-      ) : (
-        <ReactPlayer
-          url={""}
+        <ReactAudioPlayer
+          src={videoUrl}
+          autoPlay
           controls
-          playing={isPlaying}
-          onPause={handlePause}
-          onPlay={handlePlay}
+          style={audioPlayerStyle} // Apply the width style here
+        />
+      ) : (
+        <ReactAudioPlayer
+          src=""
+          autoPlay
+          controls
+          style={audioPlayerStyle} // Apply the width style here
         />
       )}
     </div>
