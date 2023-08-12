@@ -30,22 +30,26 @@ export default function AudioUrl(props) {
   };
 
   return (
-    <div>
+    <div className="fixed-bottom bg-light text-white">
       {videoUrl && !loading ? (
+        <div style={{ maxHeight: '10px' }}>
+          <ReactPlayer
+            url={videoUrl}
+            controls
+            playing={isPlaying}
+            onPause={handlePause}
+            onPlay={handlePlay}
+          />
+        </div>
+      ) : (
         <ReactPlayer
-          url={videoUrl}
+          url={""}
           controls
           playing={isPlaying}
           onPause={handlePause}
           onPlay={handlePlay}
         />
-      ):<ReactPlayer
-      url={""}
-      controls
-      playing={isPlaying}
-      onPause={handlePause}
-      onPlay={handlePlay}
-    /> }
+      )}
     </div>
   );
 }

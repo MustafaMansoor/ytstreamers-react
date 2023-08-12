@@ -8,8 +8,9 @@ export default function Nav(props) {
     console.log("Search Term:", searchTerm);
     props.Item(searchTerm);
   };
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <a className="navbar-brand ms-4 mr-2" href="/"><strong>YT Streamers</strong></a>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
