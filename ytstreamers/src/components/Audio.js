@@ -41,7 +41,7 @@ export default function Audio({ Item, loaderProgress }) {
       >
         <div className="row">
           {videoData.map((elem) => (
-            <div className="col-md-3" key={elem.id} style={{ marginBottom: '1rem' }}>
+            <div className="col-md-3" key={elem.id} style={{ marginBottom: '0.5rem' }}>
               <Audiocard
                 title={elem.title}
                 thumbnail={elem.thumbnails[0]}
