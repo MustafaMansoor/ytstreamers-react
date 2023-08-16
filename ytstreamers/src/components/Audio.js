@@ -6,6 +6,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 export default function Audio({ Item, loaderProgress }) {
   const [videoData, setVideoData] = useState([]);
   const [audioID, setAudioID] = useState();
+  const [audioTitle, setAudioTitle] = useState();
+  const [audiothumbnail, setAudiothumbnail] = useState();
+  
 
   useEffect(() => {
     if (Item) {
@@ -47,13 +50,15 @@ export default function Audio({ Item, loaderProgress }) {
                 thumbnail={elem.thumbnails[0]}
                 duration={elem.duration}
                 getid={setAudioID}
+                gettitle={setAudioTitle}
+                getthumbnail={setAudiothumbnail}
                 id={elem.id}
               />
             </div>
           ))}
         </div>
       </InfiniteScroll>
-      <AudioUrl cardid={audioID} />
+      <AudioUrl cardid={audioID} cardtitle={audioTitle} cardthumbnail={audiothumbnail}/>
     </div>
   );
 }

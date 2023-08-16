@@ -88,51 +88,77 @@ export default function AudioPlayer(props) {
   return (
     <div>
       <audio ref={audioRef} src={props.videoUrl} autoPlay={false} />
-
       {props.state === true && props.videoUrl ? (
         <>
+        {/* <img src={props.cardthumbnail} alt={props.cardthumbnail} /> */}
+          {/* <span  style={{ */}
+              {/* // color: "#00040a"}}>{props.cardtitle}</span> */}
           <i
             className={`fa-solid ${isPlaying ? "fa-pause" : "fa-play"}`}
             onClick={handlePlayPause}
-            style={{ color: "#00040a", cursor: "pointer" }}
-          >
-          </i>
+            style={{
+              color: "#00040a",
+              cursor: "pointer",
+              marginRight: "15px",
+              fontSize: "calc(1rem + 3px)",
+            }}
+          ></i>
         </>
       ) : props.state === true && props.videoUrl === "" ? (
         <i
           className="fa-solid fa-spinner fa-spin"
-          style={{ color: "#00040a", cursor: "pointer" }}
+          style={{
+            color: "#00040a",
+            cursor: "pointer",
+            marginRight: "15px",
+            fontSize: "calc(1rem + 3px)",
+          }}
         ></i>
       ) : (
         <i
           className="fa-solid fa-play"
-          style={{ color: "#00040a", cursor: "pointer" }}
-        >
-        </i>
+          style={{
+            color: "#00040a",
+            cursor: "pointer",
+            marginRight: "15px",
+            fontSize: "calc(1rem + 3px)",
+          }}
+        ></i>
       )}
-      
-      <span  style={{color: "#00040a"}}>{formatTime(currentTime)}</span>
-          <input
-            type="range"
-            min={0}
-            max={duration || 0}
-            value={currentTime}
-            onChange={(e) => handleTimeChange(e.target.value)}
-            style={{width: "700px"}}/>
-      <span style={{color: "#00040a" }}>{formatTime(duration)}</span>
 
+      <span style={{ color: "#00040a ", marginRight: "15px",fontSize:"calc(1rem + 3px)"}}>
+        {formatTime(currentTime)}
+      </span>
+      <input
+        type="range"
+        min={0}
+        max={duration || 0}
+        value={currentTime}
+        onChange={(e) => handleTimeChange(e.target.value)}
+        style={{ width: "1000px", marginRight: "15px",fontSize:"calc(1rem + 3px)"}}
+      />
 
+      <span style={{ color: "#00040a", marginRight: "15px",fontSize:"calc(1rem + 3px)" }}>
+        {formatTime(duration)}
+      </span>
 
       {props.state === true && props.videoUrl ? (
+        <i
+          className="fa-solid fa-rotate-right"
+          onClick={handleReplay}
+          style={{ color: "#00040a", cursor: "pointer", marginRight: "15px",fontSize:"calc(1rem + 3px)" }}
+        ></i>
+      ) : (
+        <i
+          className="fa-solid fa-rotate-right"
+          style={{ color: "#00040a", marginRight: "15px",fontSize:"calc(1rem + 3px)" }}
+        ></i>
+      )}
+
       <i
-        className="fa-solid fa-rotate-right"
-        onClick={handleReplay}
-        style={{ color: "#00040a", cursor: "pointer" }}
+        className="fa-solid fa-volume-high"
+        style={{ color: "#00040a", marginRight: "15px",fontSize:"calc(1rem + 3px)" }}
       ></i>
-      ):(<i className="fa-solid fa-rotate-right" style={{ color: "#00040a" }}></i>)}
-
-
-      <i className="fa-solid fa-volume-high" style={{ color: "#00040a" }}></i>
       <input
         type="range"
         min={0}
@@ -140,7 +166,6 @@ export default function AudioPlayer(props) {
         step={0.01}
         value={volume}
         onChange={(e) => handleVolumeChange(e.target.value)}
-      
       />
     </div>
   );

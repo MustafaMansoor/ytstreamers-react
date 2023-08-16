@@ -25,7 +25,7 @@ export default function AudioUrl(props) {
     <div className="fixed-bottom bg-light text-white d-flex justify-content-center align-items-center"
     style={{ height: "60px" }}
    >
-      {videoUrl && !loading ? (<AudioPlayer videoUrl={videoUrl} state={cardState}/>) : (<AudioPlayer videoUrl={""} state={cardState}/>)}
+      {videoUrl && !loading ? (<AudioPlayer videoUrl={videoUrl} state={cardState} cardtitle={props.cardtitle} cardthumbnail={props.cardthumbnail}/>) : (<AudioPlayer videoUrl={""} state={cardState}  cardtitle={props.cardtitle} cardthumbnail={props.cardthumbnail}/>)}
     </div>
   );
 }

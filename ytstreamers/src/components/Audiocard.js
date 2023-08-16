@@ -2,6 +2,8 @@ import React from 'react';
 export default function Audiocard(props) {
   const cardid=()=>{
     props.getid(props.id)
+    props.gettitle(props.title)
+    props.getthumbnail(props.thumbnail)
   };
   return (
     <div onClick={cardid}style={{  border: 'none' }}>
