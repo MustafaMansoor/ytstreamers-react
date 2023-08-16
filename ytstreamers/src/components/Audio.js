@@ -8,7 +8,6 @@ export default function Audio({ Item, loaderProgress }) {
   const [audioID, setAudioID] = useState();
   const [audioTitle, setAudioTitle] = useState();
   const [audiothumbnail, setAudiothumbnail] = useState();
-  
 
   useEffect(() => {
     if (Item) {
@@ -58,7 +57,7 @@ export default function Audio({ Item, loaderProgress }) {
           ))}
         </div>
       </InfiniteScroll>
-      <AudioUrl cardid={audioID} cardtitle={audioTitle} cardthumbnail={audiothumbnail}/>
+      <AudioUrl cardid={audioID} cardtitle={audioTitle} cardthumbnail={audiothumbnail} />
     </div>
   );
 }

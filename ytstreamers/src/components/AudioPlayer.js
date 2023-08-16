@@ -86,32 +86,44 @@ export default function AudioPlayer(props) {
   };
 
   return (
-    <div>
+    <div className="d-flex align-items-center">
       <audio ref={audioRef} src={props.videoUrl} autoPlay={false} />
       {props.state === true && props.videoUrl ? (
-        <>
-        {/* <img src={props.cardthumbnail} alt={props.cardthumbnail} /> */}
-          {/* <span  style={{ */}
-              {/* // color: "#00040a"}}>{props.cardtitle}</span> */}
+        <div className="d-flex align-items-center">
+          <img
+            src={props.cardthumbnail}
+            alt={props.cardthumbnail}
+            style={{
+              width: "50px",
+              height: "40px",
+              objectFit: "cover",
+              marginRight: "10px",
+            }}
+          />
+          <div className="container text-dark fs-6">
+            {props.cardtitle.length >= 20
+              ? props.cardtitle.slice(0, 20) + "..."
+              : props.cardtitle}
+          </div>
           <i
             className={`fa-solid ${isPlaying ? "fa-pause" : "fa-play"}`}
             onClick={handlePlayPause}
             style={{
               color: "#00040a",
               cursor: "pointer",
-              marginRight: "15px",
-              fontSize: "calc(1rem + 3px)",
+              marginRight: "12px",
+              fontSize: "calc(1rem + 2px)",
             }}
           ></i>
-        </>
+        </div>
       ) : props.state === true && props.videoUrl === "" ? (
         <i
           className="fa-solid fa-spinner fa-spin"
           style={{
             color: "#00040a",
             cursor: "pointer",
-            marginRight: "15px",
-            fontSize: "calc(1rem + 3px)",
+            marginRight: "12px",
+            fontSize: "calc(1rem + 2px)",
           }}
         ></i>
       ) : (
@@ -120,13 +132,19 @@ export default function AudioPlayer(props) {
           style={{
             color: "#00040a",
             cursor: "pointer",
-            marginRight: "15px",
-            fontSize: "calc(1rem + 3px)",
+            marginRight: "12px",
+            fontSize: "calc(1rem + 2px)",
           }}
         ></i>
       )}
 
-      <span style={{ color: "#00040a ", marginRight: "15px",fontSize:"calc(1rem + 3px)"}}>
+      <span
+        style={{
+          color: "#00040a",
+          marginRight: "12px",
+          fontSize: "calc(1rem + 2px)",
+        }}
+      >
         {formatTime(currentTime)}
       </span>
       <input
@@ -135,29 +153,52 @@ export default function AudioPlayer(props) {
         max={duration || 0}
         value={currentTime}
         onChange={(e) => handleTimeChange(e.target.value)}
-        style={{ width: "1000px", marginRight: "15px",fontSize:"calc(1rem + 3px)"}}
+        style={{
+          width: "900px",
+          marginRight: "12px",
+          fontSize: "calc(1rem + 2px)"
+        }}
       />
 
-      <span style={{ color: "#00040a", marginRight: "15px",fontSize:"calc(1rem + 3px)" }}>
-        {formatTime(duration)}
+      <span
+        style={{
+          color: "#00040a",
+          marginRight: "12px",
+          fontSize: "calc(1rem + 2px)",
+        }}
+      >
+        {formatTime(duration || 0)}
       </span>
 
       {props.state === true && props.videoUrl ? (
         <i
           className="fa-solid fa-rotate-right"
           onClick={handleReplay}
-          style={{ color: "#00040a", cursor: "pointer", marginRight: "15px",fontSize:"calc(1rem + 3px)" }}
+          style={{
+            color: "#00040a",
+            cursor: "pointer",
+            marginRight: "12px",
+            fontSize: "calc(1rem + 2px)",
+          }}
         ></i>
       ) : (
         <i
           className="fa-solid fa-rotate-right"
-          style={{ color: "#00040a", marginRight: "15px",fontSize:"calc(1rem + 3px)" }}
+          style={{
+            color: "#00040a",
+            marginRight: "12px",
+            fontSize: "calc(1rem + 2px)",
+          }}
         ></i>
       )}
 
       <i
         className="fa-solid fa-volume-high"
-        style={{ color: "#00040a", marginRight: "15px",fontSize:"calc(1rem + 3px)" }}
+        style={{
+          color: "#00040a",
+          marginRight: "12px",
+          fontSize: "calc(1rem + 2px)",
+        }}
       ></i>
       <input
         type="range"
