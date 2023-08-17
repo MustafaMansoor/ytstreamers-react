@@ -6,20 +6,18 @@ import LoadingBar from 'react-top-loading-bar'
 function App() {
   const [SearchItem, SetSearchItem] = useState("");
   const [progress, setProgress] = useState(30);
-
+  const [mode, setmode] = useState("dark");
   return (
-    <div>
-      <Nav Item={SetSearchItem} />
+    <div style={{ backgroundColor: "#0d1117", minHeight: "100vh", paddingTop: "80px" }}>
+      <Nav Item={SetSearchItem} setcurrentmode={setmode} currentmode={mode}/>
       <LoadingBar
         color='#f11946'
         progress={progress}
       />
-      <div style={{ marginTop: "80px" }}>
-        <Audio
-          loaderProgress={setProgress}
-          Item={SearchItem}
-        />
-      </div>
+      <Audio
+        loaderProgress={setProgress}
+        Item={SearchItem}
+      />
     </div>
   );
 }

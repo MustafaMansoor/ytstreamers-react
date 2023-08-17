@@ -18,8 +18,8 @@ export default function Audiocard(props) {
           {modifiedDuration}
         </span>
       </div>
-      <div className="card-body">
-        <p className="card-text">{props.title}</p>
+      <div className="card-body" style={{color:"white"}}>
+        <p className="card-text ">{props.title}</p>
       </div>
     </div>
   );

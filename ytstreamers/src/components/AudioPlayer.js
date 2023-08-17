@@ -11,11 +11,12 @@ export default function AudioPlayer(props) {
 
   useEffect(() => {
     const audioElement = audioRef.current;
+    document.title = props.cardtitle ? "YT Streamers - " + props.cardtitle : "YT Streamers";
 
     const updateTime = () => {
       setCurrentTime(audioElement.currentTime);
       setDuration(audioElement.duration);
-    };
+    }
 
     const handleSongEnded = () => {
       setIsPlaying(false);
@@ -41,7 +42,7 @@ export default function AudioPlayer(props) {
         audioElement.removeEventListener("ended", handleSongEnded);
       };
     }
-  }, [props.videoUrl, props.state, replayRequested]);
+  }, [props.videoUrl, props.state, replayRequested,props.cardtitle]);
 
   const handlePlayPause = () => {
     const audioElement = audioRef.current;
@@ -86,7 +87,7 @@ export default function AudioPlayer(props) {
   };
 
   return (
-    <div className="d-flex align-items-center">
+    <div className="d-flex align-items-center" >
       <audio ref={audioRef} src={props.videoUrl} autoPlay={false} />
       {props.state === true && props.videoUrl ? (
         <div className="d-flex align-items-center">
@@ -100,7 +101,7 @@ export default function AudioPlayer(props) {
               marginRight: "10px",
             }}
           />
-          <div className="container text-dark fs-6">
+          <div className=" text-white fs-6 " style={{marginRight:"10px"}}>
             {props.cardtitle.length >= 20
               ? props.cardtitle.slice(0, 20) + "..."
               : props.cardtitle}
@@ -109,7 +110,7 @@ export default function AudioPlayer(props) {
             className={`fa-solid ${isPlaying ? "fa-pause" : "fa-play"}`}
             onClick={handlePlayPause}
             style={{
-              color: "#00040a",
+              color: "white",
               cursor: "pointer",
               marginRight: "12px",
               fontSize: "calc(1rem + 2px)",
@@ -120,7 +121,7 @@ export default function AudioPlayer(props) {
         <i
           className="fa-solid fa-spinner fa-spin"
           style={{
-            color: "#00040a",
+            color: "white",
             cursor: "pointer",
             marginRight: "12px",
             fontSize: "calc(1rem + 2px)",
@@ -130,7 +131,7 @@ export default function AudioPlayer(props) {
         <i
           className="fa-solid fa-play"
           style={{
-            color: "#00040a",
+            color: "white",
             cursor: "pointer",
             marginRight: "12px",
             fontSize: "calc(1rem + 2px)",
@@ -140,7 +141,7 @@ export default function AudioPlayer(props) {
 
       <span
         style={{
-          color: "#00040a",
+          color: "white",
           marginRight: "12px",
           fontSize: "calc(1rem + 2px)",
         }}
@@ -162,7 +163,7 @@ export default function AudioPlayer(props) {
 
       <span
         style={{
-          color: "#00040a",
+          color: "white",
           marginRight: "12px",
           fontSize: "calc(1rem + 2px)",
         }}
@@ -175,7 +176,7 @@ export default function AudioPlayer(props) {
           className="fa-solid fa-rotate-right"
           onClick={handleReplay}
           style={{
-            color: "#00040a",
+            color: "white",
             cursor: "pointer",
             marginRight: "12px",
             fontSize: "calc(1rem + 2px)",
@@ -185,7 +186,7 @@ export default function AudioPlayer(props) {
         <i
           className="fa-solid fa-rotate-right"
           style={{
-            color: "#00040a",
+            color: "white",
             marginRight: "12px",
             fontSize: "calc(1rem + 2px)",
           }}
@@ -195,7 +196,7 @@ export default function AudioPlayer(props) {
       <i
         className="fa-solid fa-volume-high"
         style={{
-          color: "#00040a",
+          color: "white",
           marginRight: "12px",
           fontSize: "calc(1rem + 2px)",
         }}

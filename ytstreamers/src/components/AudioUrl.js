@@ -22,8 +22,8 @@ export default function AudioUrl(props) {
   }, [props.cardid]);
 
   return (
-    <div className="fixed-bottom bg-light text-white d-flex justify-content-center align-items-center container"
-    style={{ height: "60px" }}
+    <div className="fixed-bottom d-flex justify-content-center align-items-center"
+    style={{ height: "60px",backgroundColor: "#0b0c10"}}
    >
       {videoUrl && !loading ? (<AudioPlayer videoUrl={videoUrl} state={cardState} cardtitle={props.cardtitle} cardthumbnail={props.cardthumbnail} />) : (<AudioPlayer videoUrl={""} state={cardState}  cardtitle={props.cardtitle} cardthumbnail={props.cardthumbnail}/>)}
     </div>
