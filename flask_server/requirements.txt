@@ -1,0 +1,4 @@
+Flask==2.0.1
+Flask-Cors==3.1.1
+youtube-search-python==1.4.4
+yt-dlp==2022.2.22
