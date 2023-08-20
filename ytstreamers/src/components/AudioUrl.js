@@ -11,9 +11,10 @@ export default function AudioUrl(props) {
       setcardState(true);
       const fetchVideoUrl = async () => {
         setLoading(true);
-        const url = `http://127.0.0.1:8000/get_audio_url?id=${props.cardid}`;
+        const url = `https://pythonyt.azurewebsites.net/get_audio_url?id=${props.cardid}`;
         const response = await fetch(url);
         const data = await response.json();
+        console.log(data.url)
         setVideoUrl(data.url);
         setLoading(false);
       };
@@ -22,10 +23,25 @@ export default function AudioUrl(props) {
   }, [props.cardid]);
 
   return (
-    <div className="fixed-bottom d-flex justify-content-center align-items-center"
-    style={{ height: "60px",backgroundColor: "#0b0c10"}}
-   >
-      {videoUrl && !loading ? (<AudioPlayer videoUrl={videoUrl} state={cardState} cardtitle={props.cardtitle} cardthumbnail={props.cardthumbnail} />) : (<AudioPlayer videoUrl={""} state={cardState}  cardtitle={props.cardtitle} cardthumbnail={props.cardthumbnail}/>)}
+    <div
+      className="fixed-bottom d-flex justify-content-center align-items-center"
+      style={{ height: "60px", backgroundColor: "#0b0c10" }}
+    >
+      {videoUrl && !loading ? (
+        <AudioPlayer
+          videoUrl={videoUrl}
+          state={cardState}
+          cardtitle={props.cardtitle}
+          cardthumbnail={props.cardthumbnail}
+        />
+      ) : (
+        <AudioPlayer
+          videoUrl={""}
+          state={cardState}
+          cardtitle={props.cardtitle}
+          cardthumbnail={props.cardthumbnail}
+        />
+      )}
     </div>
   );
 }

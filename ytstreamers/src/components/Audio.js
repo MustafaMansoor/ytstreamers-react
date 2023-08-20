@@ -3,6 +3,7 @@ import Audiocard from './Audiocard';
 import AudioUrl from './AudioUrl';
 import Spinner from './Spinner';
 import InfiniteScroll from "react-infinite-scroll-component";
+
 export default function Audio({ Item, loaderProgress }) {
   const [videoData, setVideoData] = useState([]);
   const [audioID, setAudioID] = useState();
@@ -15,7 +16,7 @@ export default function Audio({ Item, loaderProgress }) {
     }
     const fetchData = async () => {
       loaderProgress(30);
-      const url = `http://127.0.0.1:8000/get_data?keyword=${Item}`;
+      const url = `https://pythonyt.azurewebsites.net/get_data?keyword=${Item}`;
       const response = await fetch(url);
       const jsonData = await response.json();
       setVideoData(jsonData);
@@ -26,14 +27,14 @@ export default function Audio({ Item, loaderProgress }) {
   }, [Item, loaderProgress]);
 
   const fetchMoreData = async () => {
-    const url = `http://127.0.0.1:8000/get_data?keyword=${''}`;
+    const url = `https://pythonyt.azurewebsites.net/get_data?keyword=${""}`;
     const response = await fetch(url);
     const jsonData = await response.json();
     setVideoData(prevData => [...prevData, ...jsonData]);
   };
 
   return (
-    <div className='container' >
+    <div className='container'>
       <InfiniteScroll
         dataLength={videoData.length}
         next={fetchMoreData}

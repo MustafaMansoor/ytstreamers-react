@@ -38,6 +38,5 @@ def get_audio_url():
             info_dict = ydl.extract_info(video_link, download=False)
             return jsonify(url=info_dict.get('url'))
     return jsonify(error='Missing video ID parameter'), 400
-
 if __name__ == '__main__':
     app.run()
